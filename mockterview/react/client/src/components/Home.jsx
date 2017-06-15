@@ -4,11 +4,12 @@ import LoginBox from '../auth/LoginBox.jsx'
 import Pitch from './Pitch.jsx'
 
 const Home = () => {
-  <div className = "home">
+  return (<div className = "home">
     <h1 className = 'title'>Mockterview</h1>
-    <LoginBox url='localhost:1234' />
+    <LoginBox url='localhost:1234/' />
     <Pitch />
-  </div>
+
+  </div>);
 }
 
 export default Home

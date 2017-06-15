@@ -24,5 +24,8 @@ class App extends React.Component{
   }
 }
 
+window.onload = () => {
+  const div = document.getElementById('app');
+  ReactDOM.render(<App />, div);
+}
 
-ReactDOM.render(<App />, document.getElementById('app'))

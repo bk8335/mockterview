@@ -19,7 +19,6 @@ class SignUp extends React.Component {
   }
 
   signUp(event){
-    // sign up request here
     event.preventDefault();
     const request = new XMLHttpRequest();
     request.open("POST", this.props.url);
@@ -83,9 +82,9 @@ class SignUp extends React.Component {
         <input type="password" onChange={this.handleOnChangePassword}  placeholder="Password" />
         <input type="password" onChange={this.handleOnChangePassConf}  placeholder="Password Confirmation" />
         <input type="text" onChange={this.handleOnChangeUsername}  placeholder="Username" />
-        <input type="text" onChange={this.handleOnChangeExperienceLevel}  placeholder="Experience level (intern/grad/junior/mid-level/senior/exec" />
+        <input type="text" onChange={this.handleOnChangeExperienceLevel}  placeholder="Experience level (intern/grad/junior/mid-level/senior/exec)" />
         <input type="text" onChange={this.handleOnChangeJobIndustry}  placeholder="Desired industry" />
-        <input type="text" onChange={this.handleOnChangeTargetJob}  placeholder="Desirbed job role or description if available" />
+        <input type="text" onChange={this.handleOnChangeTargetJob}  placeholder="Desired job role or description if available" />
 
         <button onClick={this.signUp}>  Sign Up! </button>
       </form>
