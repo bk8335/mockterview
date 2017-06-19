@@ -43,6 +43,7 @@ class Interviewers extends React.Component {
         <p>Industries: {interviewer.industries}</p>
         <p>Experience Level: {interviewer.experience_level}</p>
         <p>Availability: {interviewer.availability}</p>
+        <Link to='/booking'>Book an interview with {interviewer.name}</Link>
       </li>)
     })
 

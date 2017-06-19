@@ -6,11 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Appointment.destroy_all()
 User.destroy_all()
 Interviewer.delete_all()
 
-User.create!({
-  username: "KinnyKin",
+user1 = User.create!({
+  username: "BennyK",
   email: "ben@gmail.com",
   experience_level: "Junior",
   job_industry: "Technology",
@@ -19,7 +20,17 @@ User.create!({
   password_confirmation: "password1"
 })
 
-Interviewer.create!({
+user2 = User.create!({
+  username: "MrMax",
+  email: "max@gmail.com",
+  experience_level: "Senior",
+  job_industry: "Space",
+  target_job: "Astronaut",
+  password: "password1",
+  password_confirmation: "password1"
+  })
+
+i1 = Interviewer.create!({
   name: "Leigh-Ann",
   email: "leighann@codeclan.com",
   one_line_bio: "CodeClan momma bear",
@@ -28,11 +39,20 @@ Interviewer.create!({
   availability: "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"
   })
 
-Interviewer.create!({
+i2 = Interviewer.create!({
   name: "Fat Tony",
   email: "fattony@gmail.com",
   one_line_bio: "Specialise in recruiting people to make problems 'go away' if you know what I mean",
   industries: "Narcotics",
   experience_level: "Junior",
   availability: "Monday: 3-11pm, Tuesday: 4-10pm"
+  })
+
+Appointment.create!({
+  time: "27th June 19:00",
+  user_id: user1.id,
+  User_username: user1.username,
+  InterviewerName: i1.name,
+  interviewer_id: i1.id,
+  further_details: "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"
   })
