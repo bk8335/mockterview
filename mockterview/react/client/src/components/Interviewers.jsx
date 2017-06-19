@@ -33,6 +33,19 @@ class Interviewers extends React.Component {
   }
 
   render(){
+
+    let interviewerNodes = []
+    this.state.interviewers.forEach((interviewer) => {
+      interviewerNodes.push(
+        <li key={interviewer.id}>
+        <h4>Name: {interviewer.name}</h4>
+        <p>Bio: {interviewer.one_line_bio} </p>
+        <p>Industries: {interviewer.industries}</p>
+        <p>Experience Level: {interviewer.experience_level}</p>
+        <p>Availability: {interviewer.availability}</p>
+      </li>)
+    })
+
     return(
       <div className="interviewers">
         <nav>
@@ -40,7 +53,9 @@ class Interviewers extends React.Component {
         </nav>
 
         <div className='interviewers-container'>
-          
+          <ul>
+            {interviewerNodes}
+          </ul>
         </div>
       
       </div>

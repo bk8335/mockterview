@@ -8,6 +8,10 @@ class SignUp extends React.Component {
     this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this)
     this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
     this.handleOnChangePassConf = this.handleOnChangePassConf.bind(this)
+    this.handleOnChangeUsername = this.handleOnChangeUsername.bind(this)
+    this.handleOnChangeExperienceLevel = this.handleOnChangeExperienceLevel.bind(this)
+    this.handleOnChangeJobIndustry = this.handleOnChangeJobIndustry.bind(this)
+    this.handleOnChangeTargetJob = this.handleOnChangeTargetJob.bind(this)
     this.state = {
       email:"", 
       password:"",

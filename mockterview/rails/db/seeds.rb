@@ -23,7 +23,16 @@ Interviewer.create!({
   name: "Leigh-Ann",
   email: "leighann@codeclan.com",
   one_line_bio: "CodeClan momma bear",
-  industries: "tech",
-  experience_level: "all",
-  availability: "6-10pm, 6-8am"
+  industries: "Tech",
+  experience_level: "All",
+  availability: "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"
+  })
+
+Interviewer.create!({
+  name: "Fat Tony",
+  email: "fattony@gmail.com",
+  one_line_bio: "Specialise in recruiting people to make problems 'go away' if you know what I mean",
+  industries: "Narcotics",
+  experience_level: "Junior",
+  availability: "Monday: 3-11pm, Tuesday: 4-10pm"
   })

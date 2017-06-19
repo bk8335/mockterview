@@ -40,6 +40,7 @@ class SignIn extends React.Component {
         password:this.state.password,
       }
     }
+    console.log(data);
     request.send(JSON.stringify(data))
   }
 

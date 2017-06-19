@@ -2,6 +2,7 @@ import React from 'react';
 import SignIn from './SignIn.jsx';
 import SignOut from './SignOut.jsx';
 import SignUp from './SignUp.jsx';
+import MyAccount from '../components/MyAccount.jsx';
 
 
 class LoginBox extends React.Component {
@@ -46,13 +47,15 @@ class LoginBox extends React.Component {
 
   render () {
       var mainDiv = <div>
-        <h4> Sign In/Up! </h4>
+        <h4> Sign In </h4>
         <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
+        <h4> Sign Up </h4>
         <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
       </div>
       if(this.state.currentUser){
         mainDiv = <div>
-          <h4> Hello {this.state.currentUser.email}</h4>
+          <h4> Hello {this.state.currentUser.username}</h4>
+          <MyAccount />
           <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
         </div>
       }
