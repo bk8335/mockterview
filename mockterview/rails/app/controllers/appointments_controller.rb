@@ -10,4 +10,9 @@ def show
   render :json => appointment
 end
 
+def create
+  new_appointment = Appointment.create(appointment_params)
+  render :json => new_appointment 
+end 
+
 end

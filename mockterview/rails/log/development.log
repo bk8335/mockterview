@@ -7057,3 +7057,213 @@ Started GET "/appointments" for ::1 at 2017-06-19 14:20:47 +0100
 Processing by AppointmentsController#index as HTML
   [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
 Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:53:48 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.4ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:55:01 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (5.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 103ms (Views: 42.9ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:55:03 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (3.6ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 19ms (Views: 10.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:55:45 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:55:48 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (1.6ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 14:58:33 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 46ms (Views: 23.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 15:06:18 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[36mAppointment Load (2.1ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 42ms (Views: 15.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/appointments/4" for ::1 at 2017-06-19 15:06:21 +0100
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAppointment Load (2.6ms)[0m  SELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1  [["id", 4]]
+Completed 200 OK in 115ms (Views: 2.8ms | ActiveRecord: 2.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/users.json" for ::1 at 2017-06-19 15:08:44 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 11]]
+Completed 401 Unauthorized in 37ms (ActiveRecord: 2.3ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-19 15:08:52 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"max@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"max@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "max@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-06-19 14:08:52.378497"], ["current_sign_in_at", "2017-06-19 14:08:52.378497"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-19 14:08:52.380768"], ["id", 18]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 226ms (Views: 0.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users" for ::1 at 2017-06-19 15:08:52 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 15:09:00 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.6ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-19 15:09:06 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 11ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2017-06-19 15:09:06 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 15:09:22 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 15:13:37 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[36mAppointment Load (1.0ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 33ms (Views: 28.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 15:25:29 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mAppointment Load (2.9ms)[0m  SELECT "appointments".* FROM "appointments"
+Completed 200 OK in 52ms (Views: 37.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 15:25:30 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[36mAppointment Load (2.4ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 18ms (Views: 9.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 16:12:03 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[35mAppointment Load (1.7ms)[0m  SELECT "appointments".* FROM "appointments"
+Completed 200 OK in 32ms (Views: 19.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-19 16:22:11 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[36mAppointment Load (1.0ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-19 17:38:59 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 43ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for ::1 at 2017-06-19 17:38:59 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-19 17:44:06 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 49ms (Views: 22.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for ::1 at 2017-06-19 17:44:07 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 20ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-19 17:44:16 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.7ms)

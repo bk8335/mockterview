@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './components/Home.jsx';
 import Interviewers from './components/Interviewers.jsx'
+import Appointments from './components/Appointments.jsx'
 import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 
 
@@ -18,6 +19,7 @@ class App extends React.Component{
         <div className='container'>
           <Route exact path="/" component={Home} />
           <Route path='/interviewers' component={Interviewers} />
+          <Route path='/appointments' component={Appointments} />
         </div>
       </HashRouter>
     )
