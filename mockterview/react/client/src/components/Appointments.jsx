@@ -5,14 +5,36 @@ class Appointment extends React.Component{
 
   constructor(props) {
       super(props);
-      this.state = {booking_form: [] };
+      this.state = {
+        time: "",
+        further_details: "",
+        InterviewerName: "interviewer_choice",
+        interviewers: [],
+        // user_id: this.currentUser.id,
+        user_id: -2,
+        interviewer_id: -1,
+        // User_username: this.currentUser.username,
+        User_username: "should be mrMax but don't think this is working"
+      };
 
-      this.handleChange = this.handleChange.bind(this);
+      this.handleTimeChange = this.handleTimeChange.bind(this);
+      this.handleDetailChange = this.handleDetailChange.bind(this);
+      this.selectedInterviewerChanged = this.selectedInterviewerChanged.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-      this.setState({booking_form: event.target.value});
+    
+
+    handleTimeChange(event) {
+      this.setState({time: event.target.value});
+    }
+
+    handleDetailChange(event) {
+      this.setState({further_details: event.target.value})
+    }
+
+    selectedInterviewerChanged(event) {
+      this.setState({interviewer_id: event.target.value})
     }
 
     handleSubmit(event) {
@@ -20,9 +42,69 @@ class Appointment extends React.Component{
       var url = 'http://localhost:1234/appointments/'
       var request = new XMLHttpRequest()
       request.open('POST', url)
+      request.setRequestHeader("Content-Type", "application/json");
+      request.withCredentials = true;
+
+      var body = {
+        interviewer_id: this.state.interviewer_id,
+        time: this.state.time,
+        further_details: this.state.further_details,
+        user_id: this.state.user_id,
+        User_username: this.state.User_username,
+        InterviewerName: this.state.InterviewerName
+      }
+
+      request.send(JSON.stringify(body))
     }
 
+    componentDidMount() {
+      var url = 'http://localhost:1234/interviewers/'
+     var request = new XMLHttpRequest()
+     request.open('GET', url)
+     request.setRequestHeader("Content-Type", "application/json");
+     request.withCredentials = true;
+
+     request.onload = () => {
+        if(request.status === 200) {
+          console.log(request.responseText);
+          const interviewers = JSON.parse(request.responseText);
+
+          this.setState({interviewers: interviewers});
+        }
+     }
+
+     request.send(null) 
+    }
+
+
+    // userIdComponentDidMount() {
+    //    var url = 'http://localhost:1234/users/'
+    //    var request = new XMLHttpRequest()
+    //    request.open('GET', url)
+    //    request.setRequestHeader("Content-Type", "application/json");
+    //    request.withCredentials = true;
+
+    //  request.onload = () => {
+    //     if(request.status === 200) {
+    //       console.log(request.responseText);
+    //       const user = JSON.parse(request.responseText);
+
+    //       this.setState({user: data});
+    //     }
+    //  }
+
+    //  request.send(null) 
+    // }
+
+
+
     render() {
+
+      var interviewers = this.state.interviewers.map((interviewer) => {
+
+        return <option value={interviewer.id}> {interviewer.name} </option>
+
+      });
 
       return (
         <div className="appointments">
@@ -32,22 +114,21 @@ class Appointment extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <label>
             Interviewer name: 
-            <select>
-              <option value="interviewer_choice">Choose an interviewer</option>
-              <option value="batman">Batman</option>
-              <option value="superman">Superman</option>
+            <select onChange={this.selectedInterviewerChanged}>
+              <option value="-1">Choose an interviewer</option>
+              {interviewers}
             </select>
             <br></br>
           </label>
           <label>
             Interview time:
-            <input type="datetime-local" value={this.state.value} onChange={this.handleChange} />
+            <input type="text" value={this.state.value} onChange={this.handleTimeChange} />
           </label>
           <br></br>
           <br></br>
           <label>
             Additional details you would like to add?
-            <textarea name="jd_detail" cols="40" rows="5"></textarea>
+            <textarea name="further_details" cols="40" rows="5" value={this.state.value} onChange={this.handleDetailChange}></textarea>
           </label>
           <br></br>
 

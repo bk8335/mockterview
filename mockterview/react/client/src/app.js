@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Home from './components/Home.jsx';
 import Interviewers from './components/Interviewers.jsx'
 import Appointments from './components/Appointments.jsx'
+import Reviews from './components/Reviews.jsx'
 import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 
 
@@ -20,6 +21,7 @@ class App extends React.Component{
           <Route exact path="/" component={Home} />
           <Route path='/interviewers' component={Interviewers} />
           <Route path='/appointments' component={Appointments} />
+          <Route path='/reviews' component={Reviews} />
         </div>
       </HashRouter>
     )
