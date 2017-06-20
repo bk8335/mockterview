@@ -16,16 +16,19 @@ class Appointment extends React.Component{
     }
 
     handleSubmit(event) {
-      alert('Interview booking submitted - nice!');
+      event.preventDefault();
       var url = 'http://localhost:1234/appointments/'
       var request = new XMLHttpRequest()
       request.open('POST', url)
-      event.preventDefault();
     }
 
     render() {
 
       return (
+        <div className="appointments">
+          <nav>
+            <Link to='/' className='title'>Mockterview</Link>
+          </nav>
         <form onSubmit={this.handleSubmit}>
           <label>
             Interviewer name: 
@@ -50,6 +53,7 @@ class Appointment extends React.Component{
 
           <input type="submit" value="Submit" />
         </form>
+        </div>
       );
     }
 

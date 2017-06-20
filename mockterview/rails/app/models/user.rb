@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
  has_many(:appointments)
  has_many(:interviewers, {through: :appointments})
+ has_many(:reviews)
+ has_many(:interviewers, {through: :reviews})
 end

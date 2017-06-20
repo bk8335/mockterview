@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Appointment.destroy_all()
+Review.destroy_all()
 User.destroy_all()
 Interviewer.delete_all()
 
@@ -36,7 +37,7 @@ i1 = Interviewer.create!({
   one_line_bio: "CodeClan momma bear",
   industries: "Tech",
   experience_level: "All",
-  availability: "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"
+  availability: "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm",
   })
 
 i2 = Interviewer.create!({
@@ -55,4 +56,11 @@ Appointment.create!({
   InterviewerName: i1.name,
   interviewer_id: i1.id,
   further_details: "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"
+  })
+
+r1 = Review.create!({
+  rating: 5,
+  personal_review: "Leigh Ann was helpful and honest while sharing a few brutal truths",
+  user_id: user1.id,
+  interviewer_id: i1.id
   })

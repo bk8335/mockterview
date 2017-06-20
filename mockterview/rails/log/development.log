@@ -7267,3 +7267,1053 @@ Processing by InterviewersController#index as */*
   Parameters: {"interviewer"=>{}}
   [1m[35mInterviewer Load (0.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
 Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddImageToInterviewers (20170619165253)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "interviewers" ADD "image" varchar[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170619165253"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateReviews (20170620053747)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReviews (20170620053837)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rating" integer, "personal_review" varchar, "user_id" integer, "interviewer_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_reviews_on_interviewer_id" ON "reviews" ("interviewer_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170620053837"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 4]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 17]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 18]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (3.3ms)[0m  DELETE FROM "interviewers"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$8a3Uw/ZxV.NOHWWAppZH6.EUL9buDU7JC3exB58JKAr8TtBMNpRKC"], ["created_at", "2017-06-20 06:00:06.650256"], ["updated_at", "2017-06-20 06:00:06.650256"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$HcXFG0rF8Jw9W1FeKPyNa.O9VfCWd0.3b.ef09/7zDoZXN062lybi"], ["created_at", "2017-06-20 06:00:06.789738"], ["updated_at", "2017-06-20 06:00:06.789738"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"], ["created_at", "2017-06-20 06:00:06.797794"], ["updated_at", "2017-06-20 06:00:06.797794"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Fat Tony"], ["email", "fattony@gmail.com"], ["one_line_bio", "Specialise in recruiting people to make problems 'go away' if you know what I mean"], ["industries", "Narcotics"], ["experience_level", "Junior"], ["availability", "Monday: 3-11pm, Tuesday: 4-10pm"], ["created_at", "2017-06-20 06:00:06.800139"], ["updated_at", "2017-06-20 06:00:06.800139"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "appointments" ("time", "user_id", "User_username", "InterviewerName", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["time", "27th June 19:00"], ["user_id", 19], ["User_username", "BennyK"], ["InterviewerName", "Leigh-Ann"], ["interviewer_id", 15], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-20 06:00:06.802767"], ["updated_at", "2017-06-20 06:00:06.802767"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 19], ["interviewer_id", 15], ["created_at", "2017-06-20 06:00:06.808599"], ["updated_at", "2017-06-20 06:00:06.808599"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mReview Load (2.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+
+
+Started GET "/reviews" for ::1 at 2017-06-20 07:01:54 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/reviews"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.5ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (13.2ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.7ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.2ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (228.7ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.5ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.2ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (153.0ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-20 07:05:09 +0100
+
+ActionController::RoutingError (No route matches [GET] "/reviews"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/user/.rbenv/versions/2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.7ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.7ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (105.0ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (2.7ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (83.4ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /Users/user/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (158.6ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-20 07:05:28 +0100
+Processing by ReviewsController#index as HTML
+  [1m[35mReview Load (0.9ms)[0m  SELECT "reviews".* FROM "reviews"
+Completed 200 OK in 44ms (Views: 32.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-20 07:05:41 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.4ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 10ms (Views: 5.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-20 07:21:30 +0100
+Processing by ReviewsController#index as HTML
+  [1m[35mReview Load (1.7ms)[0m  SELECT "reviews".* FROM "reviews"
+Completed 200 OK in 21ms (Views: 10.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 09:34:10 +0100
+Processing by InterviewersController#index as HTML
+  [1m[36mInterviewer Load (1.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 66ms (Views: 29.6ms | ActiveRecord: 1.8ms)
+  [1m[36mInterviewer Load (1.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers"  ORDER BY "interviewers"."id" ASC LIMIT 1[0m
+  [1m[35mAppointment Load (1.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mAppointment Load (0.4ms)[0m  [1mSELECT  "appointments".* FROM "appointments"  ORDER BY "appointments"."id" ASC LIMIT 1[0m
+  [1m[35mInterviewer Load (1.3ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT  "reviews".* FROM "reviews"  ORDER BY "reviews"."id" ASC LIMIT 1[0m
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mReview Load (1.6ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."interviewer_id" = ?[0m  [["interviewer_id", 15]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddReviewToInterviewer (20170620093237)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "interviewers" ADD "review" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170620093237"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.8ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRatingToInterviewer (20170620093418)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "interviewers" ADD "rating" integer[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170620093418"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.4ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 5]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 19]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 20]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$VzPw/p0mZwvFspZuIIMKP.Vxe.B2ssdQqenkZSc/JUYnGP72GBzsm"], ["created_at", "2017-06-20 09:34:50.354376"], ["updated_at", "2017-06-20 09:34:50.354376"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$1zlYeCJ9IiDqlz2CeiF0Uuv22vYgvsJDPi8ltmnlvHRuo4.jrLcmO"], ["created_at", "2017-06-20 09:34:50.489143"], ["updated_at", "2017-06-20 09:34:50.489143"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 21]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 22]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$/5XPP9zIiqu25VRfHnlf0.PPC1qkeEf50HnTvE52NuNCxWe2Hmlmq"], ["created_at", "2017-06-20 09:35:49.501608"], ["updated_at", "2017-06-20 09:35:49.501608"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$5vFlGhV4jphpgCTHQCnGj.VbkMb8OAEefiGxBLfjVwMAgIGYF/YAG"], ["created_at", "2017-06-20 09:35:49.633672"], ["updated_at", "2017-06-20 09:35:49.633672"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveRatingFromInterviewer (20170620093716)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170620093716"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to RemoveReviewFromInterviewer (20170620093727)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170620093727"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 23]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 24]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$0hANHannvMM.U91h7Bgg6ugyDews4YqLsHCWw.PKo8JSDPgRN2juO"], ["created_at", "2017-06-20 09:37:58.102861"], ["updated_at", "2017-06-20 09:37:58.102861"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$FJwmeVHNiBlgR5BteFMOGuFLN8T2caeFKwQrlCDliwghz0CZG.efC"], ["created_at", "2017-06-20 09:37:58.233238"], ["updated_at", "2017-06-20 09:37:58.233238"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"], ["created_at", "2017-06-20 09:37:58.242804"], ["updated_at", "2017-06-20 09:37:58.242804"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Fat Tony"], ["email", "fattony@gmail.com"], ["one_line_bio", "Specialise in recruiting people to make problems 'go away' if you know what I mean"], ["industries", "Narcotics"], ["experience_level", "Junior"], ["availability", "Monday: 3-11pm, Tuesday: 4-10pm"], ["created_at", "2017-06-20 09:37:58.245615"], ["updated_at", "2017-06-20 09:37:58.245615"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "appointments" ("time", "user_id", "User_username", "InterviewerName", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["time", "27th June 19:00"], ["user_id", 25], ["User_username", "BennyK"], ["InterviewerName", "Leigh-Ann"], ["interviewer_id", 17], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-20 09:37:58.251947"], ["updated_at", "2017-06-20 09:37:58.251947"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 25], ["interviewer_id", 17], ["created_at", "2017-06-20 09:37:58.257845"], ["updated_at", "2017-06-20 09:37:58.257845"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers"  ORDER BY "interviewers"."id" ASC LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."interviewer_id" = ?  [["interviewer_id", 17]]
+
+
+Started GET "/users.json" for ::1 at 2017-06-20 10:39:36 +0100
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 18]]
+Completed 401 Unauthorized in 82ms (ActiveRecord: 2.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-20 10:39:43 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (3.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "ben@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-06-20 09:39:44.202615"], ["current_sign_in_at", "2017-06-20 09:39:44.202615"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-20 09:39:44.205773"], ["id", 25]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 253ms (Views: 0.9ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/users" for ::1 at 2017-06-20 10:39:44 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 25]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:39:48 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.6ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 4.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.4ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 6]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 2]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 25]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 26]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$EoGU4hDL.HVFvXHKBn1nkeOITBF0aMH69ZHZRhMApYu/sW4NJYtTG"], ["created_at", "2017-06-20 09:40:31.928974"], ["updated_at", "2017-06-20 09:40:31.928974"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$TApcUGxKbjfs6RycgwD4/eNY50tpu4LwNlMlP.NzZc1QC.oNMkFj2"], ["created_at", "2017-06-20 09:40:32.065777"], ["updated_at", "2017-06-20 09:40:32.065777"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"], ["created_at", "2017-06-20 09:40:32.073900"], ["updated_at", "2017-06-20 09:40:32.073900"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Fat Tony"], ["email", "fattony@gmail.com"], ["one_line_bio", "Specialise in recruiting people to make problems 'go away' if you know what I mean"], ["industries", "Narcotics"], ["experience_level", "Junior"], ["availability", "Monday: 3-11pm, Tuesday: 4-10pm"], ["created_at", "2017-06-20 09:40:32.076309"], ["updated_at", "2017-06-20 09:40:32.076309"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "appointments" ("time", "user_id", "User_username", "InterviewerName", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["time", "27th June 19:00"], ["user_id", 27], ["User_username", "BennyK"], ["InterviewerName", "Leigh-Ann"], ["interviewer_id", 19], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-20 09:40:32.079059"], ["updated_at", "2017-06-20 09:40:32.079059"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 27], ["interviewer_id", 19], ["created_at", "2017-06-20 09:40:32.081516"], ["updated_at", "2017-06-20 09:40:32.081516"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:40:43 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 1.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.4ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 7]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 3]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 27]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 28]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$7XbIiuzjl4vhqA/M5LZL3.LwXhTS1tZbwd/Mlen6d0n9fCSO3POFm"], ["created_at", "2017-06-20 09:43:08.585411"], ["updated_at", "2017-06-20 09:43:08.585411"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$jcdQ6pOVsFPiRmgWHFIk0OlOHOfpUbLBfqrQ1ZvhdyV/F44SGkc6."], ["created_at", "2017-06-20 09:43:08.718508"], ["updated_at", "2017-06-20 09:43:08.718508"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"], ["created_at", "2017-06-20 09:43:08.728294"], ["updated_at", "2017-06-20 09:43:08.728294"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Fat Tony"], ["email", "fattony@gmail.com"], ["one_line_bio", "Specialise in recruiting people to make problems 'go away' if you know what I mean"], ["industries", "Narcotics"], ["experience_level", "Junior"], ["availability", "Monday: 3-11pm, Tuesday: 4-10pm"], ["created_at", "2017-06-20 09:43:08.731298"], ["updated_at", "2017-06-20 09:43:08.731298"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "appointments" ("time", "user_id", "User_username", "InterviewerName", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["time", "27th June 19:00"], ["user_id", 29], ["User_username", "BennyK"], ["InterviewerName", "Leigh-Ann"], ["interviewer_id", 21], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-20 09:43:08.733642"], ["updated_at", "2017-06-20 09:43:08.733642"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 29], ["interviewer_id", 21], ["created_at", "2017-06-20 09:43:08.735960"], ["updated_at", "2017-06-20 09:43:08.735960"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveReviewFromInterviewers (20170620094350)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170620094350"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to RemoveRatingFromInterviewers (20170620094407)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170620094407"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_appointments_on_user_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_interviewer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:45:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 18ms (Views: 12.9ms | ActiveRecord: 1.0ms)
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers"  ORDER BY "interviewers"."id" ASC LIMIT 1[0m
+  [1m[35mReview Load (0.5ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."interviewer_id" = ?  [["interviewer_id", 21]]
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:46:10 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (1.9ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 40ms (Views: 32.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:47:02 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 30ms (Views: 20.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:47:03 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.4ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:47:20 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (16.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 47ms (Views: 26.1ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:47:34 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.5ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-20 10:47:36 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 25]]
+Completed 401 Unauthorized in 23ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:47:52 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-20 10:47:59 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-20 10:48:04 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "ben@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-06-20 09:48:05.152631"], ["current_sign_in_at", "2017-06-20 09:48:05.152631"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-20 09:48:05.153717"], ["id", 29]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 166ms (Views: 0.6ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users" for ::1 at 2017-06-20 10:48:05 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 29]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:48:20 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-20 10:51:15 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (2.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 29]]
+Completed 200 OK in 38ms (Views: 6.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users" for ::1 at 2017-06-20 10:51:15 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 29]]
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 10:51:25 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.9ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-20 10:52:20 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[36mAppointment Load (1.2ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+Completed 200 OK in 33ms (Views: 18.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-20 10:52:56 +0100
+Processing by AppointmentsController#index as HTML
+  [1m[35mAppointment Load (1.2ms)[0m  SELECT "appointments".* FROM "appointments"
+Completed 200 OK in 18ms (Views: 11.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-20 11:03:14 +0100
+Processing by ReviewsController#index as HTML
+  [1m[36mReview Load (1.9ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+Completed 200 OK in 30ms (Views: 17.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-20 11:31:42 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (3.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 29]]
+Completed 200 OK in 134ms (Views: 52.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users" for ::1 at 2017-06-20 11:31:42 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 29]]
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:31:46 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (3.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:35:49 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (2.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 40ms (Views: 21.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:37:24 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.8ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 60ms (Views: 34.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:38:15 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (6.5ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 57ms (Views: 35.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:38:28 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (2.0ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 52ms (Views: 37.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:39:58 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (1.5ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 49ms (Views: 23.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:40:11 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 38ms (Views: 22.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:40:31 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (5.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 53ms (Views: 19.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:40:59 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.5ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 33ms (Views: 25.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:44:14 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (10.5ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 64ms (Views: 46.9ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:44:35 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (2.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 53ms (Views: 19.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:44:38 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (16.2ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 50ms (Views: 29.1ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:46:38 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (2.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 32ms (Views: 18.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:53:16 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (2.4ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 21ms (Views: 13.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-20 11:53:48 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (1.5ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 41ms (Views: 28.3ms | ActiveRecord: 1.5ms)

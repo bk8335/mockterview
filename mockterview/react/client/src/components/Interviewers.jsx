@@ -7,7 +7,8 @@ class Interviewers extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
-      interviewers: [] 
+      interviewers: [],
+      pics: ['../../images/leighann@codeclan.com.jpg','../../images/fattony@gmail.com.jpg']
     }
   }
 
@@ -35,14 +36,17 @@ class Interviewers extends React.Component {
   render(){
 
     let interviewerNodes = []
-    this.state.interviewers.forEach((interviewer) => {
+    this.state.interviewers.forEach((interviewer, index) => {
       interviewerNodes.push(
         <li key={interviewer.id}>
+
         <h4>Name: {interviewer.name}</h4>
+        <img src={this.state.pics[index]} height="20%" width="20%"/>
         <p>Bio: {interviewer.one_line_bio} </p>
         <p>Industries: {interviewer.industries}</p>
         <p>Experience Level: {interviewer.experience_level}</p>
         <p>Availability: {interviewer.availability}</p>
+        <p>Reviews: coming soon!</p>
         <Link to='/appointments'>Book an interview with {interviewer.name}</Link>
       </li>)
     })
