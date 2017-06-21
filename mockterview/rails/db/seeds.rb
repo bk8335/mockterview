@@ -61,7 +61,7 @@ i2 = Interviewer.create!({
 
 Appointment.create!({
   time: "27th June 19:00",
-  user_id: user1.id,
+  user_id: user3.id,
   interviewer_id: i1.id,
   further_details: "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"
   })

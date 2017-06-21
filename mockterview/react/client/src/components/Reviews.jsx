@@ -40,10 +40,11 @@ class Reviews extends React.Component{
       reviewElements.push(
         <li key={review.id}>
           <h3>Interviewer: {review.interviewer.name} </h3>
-          <h2>Rating: {review.rating}</h2>
-          <p>Review: {review.personal_review}</p>
-          <p>Date: {review.updated_at.slice(0,10)} </p>
-          <p>Submitted by: {review.user.username} </p>
+          <h3><strong>Rating: {review.rating}</strong></h3>
+          <p><strong>Review:</strong> {review.personal_review}</p>
+          <p><strong>Date:</strong> {review.updated_at.slice(0,10)} </p>
+          <p><strong>Submitted by:</strong> {review.user.username} </p>
+          <br></br>
         </li>
       )
     })

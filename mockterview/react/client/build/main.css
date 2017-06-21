@@ -10,7 +10,7 @@ body {
 
 }
 
-p {
+p, label, option {
   color: rgb(206,220,231);
 }
 
