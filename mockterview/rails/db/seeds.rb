@@ -31,22 +31,32 @@ user2 = User.create!({
   password_confirmation: "password1"
   })
 
+user3 = User.create!({
+  username: "TravisK",
+  email: "travisk@gmail.com",
+  experience_level: "Executive",
+  job_industry: "(Formerly) car sharing",
+  target_job: "Anything...",
+  password: "password1",
+  password_confirmation: "password1"
+  })
+
 i1 = Interviewer.create!({
   name: "Leigh-Ann",
   email: "leighann@codeclan.com",
   one_line_bio: "CodeClan momma bear",
   industries: "Tech",
   experience_level: "All",
-  availability: "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm",
+  availability: "Monday-Friday: 6-8am, 6-10pm",
   })
 
 i2 = Interviewer.create!({
-  name: "Fat Tony",
-  email: "fattony@gmail.com",
-  one_line_bio: "Specialise in recruiting people to make problems 'go away' if you know what I mean",
-  industries: "Narcotics",
-  experience_level: "Junior",
-  availability: "Monday: 3-11pm, Tuesday: 4-10pm"
+  name: "Laszlo Bock",
+  email: "lbock@gmail.com",
+  one_line_bio: "Head of HR at google",
+  industries: "Tech",
+  experience_level: "Experienced",
+  availability: "Monday-Friday: 6am-3pm"
   })
 
 Appointment.create!({
@@ -61,4 +71,18 @@ r1 = Review.create!({
   personal_review: "Leigh Ann was helpful and honest while sharing a few brutal truths",
   user_id: user1.id,
   interviewer_id: i1.id
+  })
+
+r2 = Review.create!({
+  rating: 4,
+  personal_review: "Shared some top tips to allow a 2 year old to succeed in business",
+  user_id: user2.id,
+  interviewer_id: i1.id
+  })
+
+r3 = Review.create!({
+  rating: 1,
+  personal_review: "Only talked about how things worked at some company called 'Google' or something",
+  user_id: user2.id,
+  interviewer_id: i2.id
   })

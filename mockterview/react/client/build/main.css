@@ -18,7 +18,7 @@ h1, h2, h3 {
   color: white;
 }
 
-input[type=text] {
+input[type=text, type=password] {
     padding:5px; 
     border:2px solid #ccc; 
     -webkit-border-radius: 5px;
@@ -81,6 +81,7 @@ label{
   /*background: #dddddd;*/
   /*width: 300px;*/
   border-radius: 5px; 
+  font-weight: bold;
 }
 
 ul {
@@ -94,6 +95,11 @@ ul {
 #welcome-back {
   text-align: left;
   margin-left: 2.2em;
+}
+
+#logo{
+  width: 10%;
+  height: 10%;
 }
 
 

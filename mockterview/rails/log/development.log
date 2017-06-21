@@ -16251,3 +16251,870 @@ Processing by AppointmentsController#index as */*
   [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 25]]
   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 34]]
 Completed 200 OK in 26ms (Views: 1.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:07:06 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 34]]
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 26]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 33]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", -1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 34]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 34]]
+Completed 200 OK in 19ms (Views: 1.9ms | ActiveRecord: 1.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 31]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "appointments" WHERE "appointments"."id" = ?[0m  [["id", 34]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 35]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 12]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 13]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 14]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 33]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 34]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 35]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "interviewers"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$Sdjqt50sBvhX/6c98KXcLuav4MABrq99jEzAsbaKv4Op9U0tocsyC"], ["created_at", "2017-06-21 21:07:17.363512"], ["updated_at", "2017-06-21 21:07:17.363512"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$R4GLRjaRYTvlXMNemk6JLOQTX/aMIOX9kAeaCqI84g5enGQ5CHM5O"], ["created_at", "2017-06-21 21:07:17.499123"], ["updated_at", "2017-06-21 21:07:17.499123"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday: 6-8am, 6-10pm, Tuesday: 6-8am, 5-7pm"], ["created_at", "2017-06-21 21:07:17.507350"], ["updated_at", "2017-06-21 21:07:17.507350"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Fat Tony"], ["email", "fattony@gmail.com"], ["one_line_bio", "Specialise in recruiting people to make problems 'go away' if you know what I mean"], ["industries", "Narcotics"], ["experience_level", "Junior"], ["availability", "Monday: 3-11pm, Tuesday: 4-10pm"], ["created_at", "2017-06-21 21:07:17.510154"], ["updated_at", "2017-06-21 21:07:17.510154"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "appointments" ("time", "user_id", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["time", "2017-06-27 19:00:00.000000"], ["user_id", 36], ["interviewer_id", 27], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-21 21:07:17.513070"], ["updated_at", "2017-06-21 21:07:17.513070"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 36], ["interviewer_id", 27], ["created_at", "2017-06-21 21:07:17.515622"], ["updated_at", "2017-06-21 21:07:17.515622"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:07:20 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 34]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:08:42 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:09:59 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:10:10 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:10:24 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:10:35 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-21 22:10:50 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ben@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "ben@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-06-21 21:10:50.424827"], ["current_sign_in_at", "2017-06-21 21:10:50.424827"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-21 21:10:50.425766"], ["id", 36]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 146ms (Views: 0.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:10:50 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:10:58 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:11:09 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:11:13 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:11:19 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:11:19 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:11:21 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (1.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:11:23 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:11:23 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:12:33 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:12:33 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:12:44 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:12:46 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:12:49 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:12:50 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:12:50 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:12:54 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:12:58 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+Completed 200 OK in 9ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:13:02 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:13:05 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:13:07 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.4ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:13:08 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:13:27 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:13:28 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/reviews/" for ::1 at 2017-06-21 22:14:06 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"interviewer_id"=>"28", "rating"=>"4", "personal_review"=>"was very fair", "user_id"=>-2, "review"=>{"rating"=>"4", "personal_review"=>"was very fair", "user_id"=>-2, "interviewer_id"=>"28"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("rating", "user_id", "interviewer_id", "personal_review", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 4], ["user_id", 36], ["interviewer_id", 28], ["personal_review", "was very fair"], ["created_at", "2017-06-21 21:14:06.757045"], ["updated_at", "2017-06-21 21:14:06.757045"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:14:06 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:19:45 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:20:41 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.4ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:14 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 14ms (Views: 2.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:33 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.5ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:34 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:35 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:36 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 12ms (Views: 1.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:21:36 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.5ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 15ms (Views: 1.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:22:04 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 12ms (Views: 1.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:23:00 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:23:17 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.7ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 37ms (Views: 4.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:23:19 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 27]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 36]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 28]]
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:23:20 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:23:20 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:23:24 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.4ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:24:01 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.1ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:25:29 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:25:45 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:25:45 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:25:57 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:25:58 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.4ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:25:59 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.1ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:26:01 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:26:01 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 36]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 36]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 15]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 16]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 36]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 37]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "interviewers"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$nBgIKxh4eJUU7rLp8InLdu/yTWiUtTmRkgnBJTAgKLLQGOvRnUPWW"], ["created_at", "2017-06-21 21:34:35.961404"], ["updated_at", "2017-06-21 21:34:35.961404"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$UC5RXFPEi7yBhuuYpzzplO4bfwI0typok339gIuX9Z3JYwftthBj2"], ["created_at", "2017-06-21 21:34:36.094656"], ["updated_at", "2017-06-21 21:34:36.094656"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'travisk@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "TravisK"], ["email", "travisk@gmail.com"], ["experience_level", "Executive"], ["job_industry", "Travel"], ["target_job", "Anything"], ["encrypted_password", "$2a$11$ItdTsemVbkCEE3WqW945Ju5QM1buBbB0eLElsHOQBDbhiLlo7Fs66"], ["created_at", "2017-06-21 21:34:36.232783"], ["updated_at", "2017-06-21 21:34:36.232783"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday-Friday: 6-8am, 6-10pm"], ["created_at", "2017-06-21 21:34:36.242256"], ["updated_at", "2017-06-21 21:34:36.242256"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Laszlo Bock"], ["email", "lbock@gmail.com"], ["one_line_bio", "Head of HR at google"], ["industries", "Tech"], ["experience_level", "Experienced"], ["availability", "Monday-Friday: 6am-3pm"], ["created_at", "2017-06-21 21:34:36.245091"], ["updated_at", "2017-06-21 21:34:36.245091"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "appointments" ("time", "user_id", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["time", "2017-06-27 19:00:00.000000"], ["user_id", 38], ["interviewer_id", 29], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-21 21:34:36.247828"], ["updated_at", "2017-06-21 21:34:36.247828"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 38], ["interviewer_id", 29], ["created_at", "2017-06-21 21:34:36.250027"], ["updated_at", "2017-06-21 21:34:36.250027"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 1], ["personal_review", "Shared some top tips to allow a 2 year old to succeed in business"], ["user_id", 39], ["interviewer_id", 29], ["created_at", "2017-06-21 21:34:36.252153"], ["updated_at", "2017-06-21 21:34:36.252153"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:34:41 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 36]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:34:43 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-21 22:34:54 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"travisk@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"travisk@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "travisk@gmail.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2017-06-21 21:34:54.738005"], ["current_sign_in_at", "2017-06-21 21:34:54.738005"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-21 21:34:54.738968"], ["id", 40]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 143ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:34:54 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 40]]
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:35:40 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 40]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.8ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 29]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 38]]
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:35:45 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:36:13 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (3.1ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:36:15 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:36:35 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.2ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:36:41 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 40]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 38]]
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 29]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 39]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 29]]
+Completed 200 OK in 14ms (Views: 1.5ms | ActiveRecord: 1.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT "appointments".* FROM "appointments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "appointments" WHERE "appointments"."id" = ?  [["id", 37]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 17]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 18]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 38]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 39]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 40]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "interviewers"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ben@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "BennyK"], ["email", "ben@gmail.com"], ["experience_level", "Junior"], ["job_industry", "Technology"], ["target_job", "Junior Dev"], ["encrypted_password", "$2a$11$uuGrGu8GKux7fNtfMrr8Z.L5dEk/E4t7xETtvHF7EdMIS2tgkXMYe"], ["created_at", "2017-06-21 21:38:17.911388"], ["updated_at", "2017-06-21 21:38:17.911388"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'max@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "MrMax"], ["email", "max@gmail.com"], ["experience_level", "Senior"], ["job_industry", "Space"], ["target_job", "Astronaut"], ["encrypted_password", "$2a$11$CLGoAY0fq6rSioEwkVl0AuAZv6uUNz0CzqdVz.im48Cfl3HEHo0uO"], ["created_at", "2017-06-21 21:38:18.048430"], ["updated_at", "2017-06-21 21:38:18.048430"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'travisk@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "experience_level", "job_industry", "target_job", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["username", "TravisK"], ["email", "travisk@gmail.com"], ["experience_level", "Executive"], ["job_industry", "(Formerly) car sharing"], ["target_job", "Anything..."], ["encrypted_password", "$2a$11$LH2L0oEZPWJRlAzGgzRf..Bt0RWKiaUAkYU6xQem1ho9hpVxisgDC"], ["created_at", "2017-06-21 21:38:18.181281"], ["updated_at", "2017-06-21 21:38:18.181281"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Leigh-Ann"], ["email", "leighann@codeclan.com"], ["one_line_bio", "CodeClan momma bear"], ["industries", "Tech"], ["experience_level", "All"], ["availability", "Monday-Friday: 6-8am, 6-10pm"], ["created_at", "2017-06-21 21:38:18.191176"], ["updated_at", "2017-06-21 21:38:18.191176"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "interviewers" ("name", "email", "one_line_bio", "industries", "experience_level", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Laszlo Bock"], ["email", "lbock@gmail.com"], ["one_line_bio", "Head of HR at google"], ["industries", "Tech"], ["experience_level", "Experienced"], ["availability", "Monday-Friday: 6am-3pm"], ["created_at", "2017-06-21 21:38:18.193968"], ["updated_at", "2017-06-21 21:38:18.193968"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "appointments" ("time", "user_id", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["time", "2017-06-27 19:00:00.000000"], ["user_id", 41], ["interviewer_id", 31], ["further_details", "have an upcoming interview with Deloitte so please be as horrible as possible to effectively prepare me"], ["created_at", "2017-06-21 21:38:18.196838"], ["updated_at", "2017-06-21 21:38:18.196838"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 5], ["personal_review", "Leigh Ann was helpful and honest while sharing a few brutal truths"], ["user_id", 41], ["interviewer_id", 31], ["created_at", "2017-06-21 21:38:18.201387"], ["updated_at", "2017-06-21 21:38:18.201387"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["rating", 4], ["personal_review", "Shared some top tips to allow a 2 year old to succeed in business"], ["user_id", 42], ["interviewer_id", 31], ["created_at", "2017-06-21 21:38:18.204734"], ["updated_at", "2017-06-21 21:38:18.204734"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("rating", "personal_review", "user_id", "interviewer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 1], ["personal_review", "Only talked about how things worked at some company called 'Google' or something"], ["user_id", 42], ["interviewer_id", 32], ["created_at", "2017-06-21 21:38:18.206787"], ["updated_at", "2017-06-21 21:38:18.206787"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:38:20 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 40]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.2ms)
+
+
+Started POST "/users/sign_in.json" for ::1 at 2017-06-21 22:38:28 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"travisk@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"travisk@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "travisk@gmail.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2017-06-21 21:38:28.516820"], ["current_sign_in_at", "2017-06-21 21:38:28.516820"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-06-21 21:38:28.517413"], ["id", 43]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Completed 201 Created in 144ms (Views: 0.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:38:28 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 43]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/interviewers" for ::1 at 2017-06-21 22:38:34 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[35mInterviewer Load (0.3ms)[0m  SELECT "interviewers".* FROM "interviewers"
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:38:39 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 43]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 41]]
+  [1m[35mInterviewer Load (0.1ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 31]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 31]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mInterviewer Load (0.2ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 32]]
+Completed 200 OK in 18ms (Views: 6.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:39:00 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/appointments/" for ::1 at 2017-06-21 22:39:26 +0100
+Processing by AppointmentsController#create as */*
+  Parameters: {"interviewer_id"=>"31", "time"=>"2017-06-23T16:00", "further_details"=>"have an upcoming interview at Adobe", "user_id"=>-2, "appointment"=>{"further_details"=>"have an upcoming interview at Adobe", "user_id"=>-2, "interviewer_id"=>"31", "time"=>"2017-06-23T16:00"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "appointments" ("time", "user_id", "interviewer_id", "further_details", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["time", "2017-06-23 16:00:00.000000"], ["user_id", 43], ["interviewer_id", 31], ["further_details", "have an upcoming interview at Adobe"], ["created_at", "2017-06-21 21:39:26.373983"], ["updated_at", "2017-06-21 21:39:26.373983"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-21 22:39:26 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.1ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 31]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 41]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 31]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 43]]
+Completed 200 OK in 19ms (Views: 2.0ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/appointments/38" for ::1 at 2017-06-21 22:39:40 +0100
+Processing by AppointmentsController#destroy as */*
+  Parameters: {"id"=>"38"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  "appointments".* FROM "appointments" WHERE "appointments"."id" = ? LIMIT 1[0m  [["id", 38]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "appointments" WHERE "appointments"."id" = ?[0m  [["id", 38]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/interviewers/" for ::1 at 2017-06-21 22:39:42 +0100
+Processing by InterviewersController#index as */*
+  Parameters: {"interviewer"=>{}}
+  [1m[36mInterviewer Load (0.3ms)[0m  [1mSELECT "interviewers".* FROM "interviewers"[0m
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reviews/" for ::1 at 2017-06-21 22:39:51 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"interviewer_id"=>"31", "rating"=>"5", "personal_review"=>"very good", "user_id"=>-2, "review"=>{"rating"=>"5", "personal_review"=>"very good", "user_id"=>-2, "interviewer_id"=>"31"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reviews" ("rating", "user_id", "interviewer_id", "personal_review", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["rating", 5], ["user_id", 43], ["interviewer_id", 31], ["personal_review", "very good"], ["created_at", "2017-06-21 21:39:51.728511"], ["updated_at", "2017-06-21 21:39:51.728511"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/reviews" for ::1 at 2017-06-21 22:39:51 +0100
+Processing by ReviewsController#index as */*
+  Parameters: {"review"=>{}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 41]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 31]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 31]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mInterviewer Load (0.1ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 32]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 43]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 19ms (Views: 4.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-21 22:40:21 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 43]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-21 22:40:21 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 43]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)

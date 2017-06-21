@@ -8,7 +8,7 @@ class Interviewers extends React.Component {
     super(props)
     this.state = { 
       interviewers: [],
-      pics: ['../../images/leighann@codeclan.com.jpg','../../images/fattony@gmail.com.jpg']
+      pics: ['../../images/leighann@codeclan.com.jpg','../../images/lbock@gmail.com.jpg']
     }
   }
 
