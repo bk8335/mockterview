@@ -24,6 +24,16 @@ def create
     })
 
   render :json => new_appointment 
-end 
+end
+
+def destroy
+  appointment = Appointment.find(params[:id])
+
+  if(appointment.destroy!)
+    render :json => {status: :success}
+  else
+    render :json => {status: :delete_failed}
+  end
+end
 
 end
