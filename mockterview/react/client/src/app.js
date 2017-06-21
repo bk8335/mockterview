@@ -4,8 +4,9 @@ import Home from './components/Home.jsx';
 import Interviewers from './components/Interviewers.jsx'
 import Appointments from './components/Appointments.jsx'
 import Reviews from './components/Reviews.jsx'
-import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 import MyInterviews from './components/MyInterviews.jsx'
+import NewReview from './components/NewReview.jsx'
+import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 
 
 // window.addEventListener('load', () => {
@@ -24,6 +25,7 @@ class App extends React.Component{
           <Route path='/appointments' component={Appointments} />
           <Route path='/reviews' component={Reviews} />
           <Route path='/my_appointments' component={MyInterviews} />
+          <Route path='/new_review' component={NewReview} />
         </div>
       </HashRouter>
     )

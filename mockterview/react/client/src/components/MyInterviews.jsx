@@ -74,15 +74,17 @@ class MyInterviews extends React.Component {
         return days + " days " + hours + " hours " + minutes + " minutes "
       }
 
-      
-
     // }, 1000)
+  }
+
+  newReviewPage(){
+    window.location = '/#/new_review/'
+    // this.props.history.push("/new_review");
   }
 
 
   render() {
     let appointmentDetails = []
-    
 
     this.state.myInterviews.forEach((appointment) => {console.log(appointment)
       appointmentDetails.push(
@@ -94,7 +96,8 @@ class MyInterviews extends React.Component {
           <p>Time until interview: {this.countdownClock(appointment.time)} </p>
           <p>Further details: {appointment.further_details}</p>
           <button onClick={this.deleteAppointment} value={appointment.id}>Cancel Appointment </button>
-          <button>Write Review about {appointment.InterviewerName}</button>
+          <button onClick={this.newReviewPage}>Write Review about {appointment.interviewer.name}</button>
+          
         </li>
       )
     })

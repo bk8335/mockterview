@@ -21,7 +21,6 @@ class Reviews extends React.Component{
 
     request.onload = () => {
        if(request.status === 200){
-        console.log("request: ", request.responseText)
         var data = JSON.parse(request.responseText)
         this.setState( { reviews: data } )
        } else{
@@ -36,6 +35,7 @@ class Reviews extends React.Component{
 
   render() {
     let reviewElements = []
+    console.log(this.state)
     this.state.reviews.forEach((review) => {
       reviewElements.push(
         <li key={review.id}>
