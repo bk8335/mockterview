@@ -36,6 +36,7 @@ class MyAccount extends React.Component {
     const user = this.state.currentUser;
 
     return(
+      
       <div className = 'user-container'>
         <ul> 
         <li>
@@ -47,7 +48,10 @@ class MyAccount extends React.Component {
           <h4>Target job: {user.target_job}</h4>
         </li>
         </ul>
+        
       </div>
+      
+
     )
   }
 
