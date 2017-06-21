@@ -84,9 +84,7 @@ class NewReview extends React.Component {
 
     return (
       <div className="new-review">
-        <nav>
-          <Link to='/' className='title'>Mockterview</Link>
-        </nav>
+        
       <h1>Review your Mockterview Interviewer</h1>
 
       <form onSubmit={this.handleSubmit}>

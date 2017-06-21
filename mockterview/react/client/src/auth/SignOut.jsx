@@ -28,8 +28,6 @@ class SignOut extends React.Component{
     return (
        <div>
         <button onClick={this.signOut}>Sign Out</button>
-        <Link className='interviewers-link' to='/interviewers'>View Interviewers</Link>
-        <Link className='my-appointments' to='/my_appointments'>View My Appointments</Link>
       </div>
     )
   }

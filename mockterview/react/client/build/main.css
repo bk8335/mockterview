@@ -1,3 +1,65 @@
 body {
-  background-color: dodgerBlue;
+  /*background-color: #000080;*/
+  
+  background: linear-gradient(to bottom, #1e459a 0%,#2a70d8 50%,#7eaae8 100%);
+  margin-left: 20%;
+  margin-right: 32%;
+  text-align: center;
+  font-size: 17px;
+
+
+}
+
+p {
+  color: rgb(206,220,231);
+}
+
+h1, h2, h3 {
+  color: white;
+}
+
+.topnav {
+    /*background-color: black;*/
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #0C0C5A;
+    color: white;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#pitch-div{
+  border: 5px solid rgb(206,220,231);
+  padding: 10px 40px; 
+  /*background: #dddddd;*/
+  /*width: 300px;*/
+  border-radius: 5px; 
+}
+
+ul {
+  list-style-type: none;
+}
+
+#my-account {
+  text-align: left;
+}
+
+#welcome-back {
+  text-align: left;
+  margin-left: 2.2em;
 }

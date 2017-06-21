@@ -33,6 +33,14 @@ class Interviewers extends React.Component {
     request.send(null)
   }
 
+  allReviews(){
+    window.location = '/#/reviews/'
+  }
+
+  bookAppointment(){
+    window.location = '/#/appointments'
+  }
+
   render(){
 
     let interviewerNodes = []
@@ -40,32 +48,23 @@ class Interviewers extends React.Component {
       interviewerNodes.push(
         <li key={interviewer.id}>
 
-        <h4>Name: {interviewer.name}</h4>
+        <h3>Name: {interviewer.name}</h3>
         <img src={this.state.pics[index]} height="20%" width="20%"/>
-        <p>Bio: {interviewer.one_line_bio} </p>
-        <p>Industries: {interviewer.industries}</p>
-        <p>Experience Level: {interviewer.experience_level}</p>
-        <p>Availability: {interviewer.availability}</p>
-        <Link to='/reviews'>All Interviewer Reviews</Link>
-        <br></br>
-        <br></br>
-        <Link to='/appointments'>Book an interview with {interviewer.name}</Link>
+        <p><strong>Bio:</strong> {interviewer.one_line_bio} </p>
+        <p><strong>Industries:</strong> {interviewer.industries}</p>
+        <p><strong>Experience Level:</strong> {interviewer.experience_level}</p>
+        <p><strong>Availability:</strong> {interviewer.availability}</p>
+        <button onClick={this.allReviews}>All Interviewer Reviews</button>
+        <button onClick={this.bookAppointment}>Book an interview with {interviewer.name}</button>
       </li>)
     })
 
     return(
-      <div className="interviewers">
-        <nav>
-          <Link to='/' className='title'>Mockterview</Link>
-        </nav>
-
         <div className='interviewers-container'>
           <ul>
             {interviewerNodes}
           </ul>
         </div>
-      
-      </div>
     )
   }
 

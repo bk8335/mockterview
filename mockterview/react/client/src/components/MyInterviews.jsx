@@ -61,7 +61,7 @@ class MyInterviews extends React.Component {
 
     // var countdownTimer = setInterval(function(){
 
-      var distanceMs = Date.parse(time) - Date.now()
+      var distanceMs = Date.parse(time) - Date.now() - 1000*60*60
 
       if (distanceMs < 0) {
           // clearInterval(countdownTimer);
@@ -90,11 +90,11 @@ class MyInterviews extends React.Component {
       appointmentDetails.push(
 
         <li key={appointment.id}>
-          <h4>Interviewer: {appointment.interviewer.name}</h4>
-          <p>Date: {appointment.time.slice(0,10) }</p>
-          <p>Time: {appointment.time.slice(12,16) }</p>
-          <p>Time until interview: {this.countdownClock(appointment.time)} </p>
-          <p>Further details: {appointment.further_details}</p>
+          <h3>Interviewer: {appointment.interviewer.name}</h3>
+          <p><strong>Date:</strong> {appointment.time.slice(0,10) }</p>
+          <p><strong>Time:</strong> {appointment.time.slice(11,16) }</p>
+          <p><strong>Time until interview:</strong> {this.countdownClock(appointment.time)} </p>
+          <p><strong>Further details:</strong> {appointment.further_details}</p>
           <button onClick={this.deleteAppointment} value={appointment.id}>Cancel Appointment </button>
           <button onClick={this.newReviewPage}>Write Review about {appointment.interviewer.name}</button>
           
@@ -106,17 +106,12 @@ class MyInterviews extends React.Component {
     // alternatively, should the path be the user/id/my_appointments? How do I do that?
 
     return(
-      <div className="interviewers">
-        <nav>
-          <Link to='/' className='title'>Mockterview</Link>
-        </nav>
 
         <div className='interviewers-container'>
           <ul>
             {appointmentDetails}
           </ul>
         </div>
-      </div>
 
       )
 

@@ -41,11 +41,11 @@ class MyAccount extends React.Component {
         <ul> 
         <li>
           <h2>My Account details</h2>
-          <h4>Email: {user.email}</h4>
-          <h4>Username: {user.username} </h4>
-          <h4>Experience level: {user.experience_level}</h4>
-          <h4>Job industry: {user.job_industry}</h4>
-          <h4>Target job: {user.target_job}</h4>
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Username:</strong> {user.username} </p>
+          <p><strong>Experience level:</strong> {user.experience_level}</p>
+          <p><strong>Job industry:</strong> {user.job_industry}</p>
+          <p><strong>Target job:</strong> {user.target_job}</p>
         </li>
         </ul>
         

@@ -88,9 +88,7 @@ class Appointment extends React.Component{
 
       return (
         <div className="appointments">
-          <nav>
-            <Link to='/' className='title'>Mockterview</Link>
-          </nav>
+          <h2>Book an Appointment</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
             Interviewer name: 

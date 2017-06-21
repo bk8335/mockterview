@@ -50,12 +50,9 @@ class Reviews extends React.Component{
     
 
     return(
-      <div>
-        <Link to='/' className='title'>Mockterview</Link>
         <div className = 'review-container'>
           <ul>{reviewElements}</ul>
         </div>
-      </div>
     )
   }
 
