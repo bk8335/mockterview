@@ -91,7 +91,7 @@ class Appointment extends React.Component{
           <h2>Book an Appointment</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Interviewer name: 
+            Interviewer name:  
             <select onChange={this.selectedInterviewerChanged}>
               <option value="-1">Choose an interviewer</option>
               {interviewers}
@@ -99,13 +99,13 @@ class Appointment extends React.Component{
             <br></br>
           </label>
           <label>
-            Interview time:
+            Interview time: 
             <input type="datetime-local" value={this.state.value} onChange={this.handleTimeChange} />
           </label>
           <br></br>
           <br></br>
           <label>
-            Additional details you would like to add?
+            Additional details you would like to add? 
             <textarea name="further_details" cols="40" rows="5" value={this.state.value} onChange={this.handleDetailChange}></textarea>
           </label>
           <br></br>
