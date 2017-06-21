@@ -8,13 +8,10 @@ class Appointment extends React.Component{
       this.state = {
         time: "",
         further_details: "",
-        InterviewerName: "interviewer_choice",
         interviewers: [],
-        // user_id: this.currentUser.id,
         user_id: -2,
         interviewer_id: -1,
-        // User_username: this.currentUser.username,
-        User_username: "should be mrMax but don't think this is working"
+        User_username: ""
       };
 
       this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -51,10 +48,14 @@ class Appointment extends React.Component{
         further_details: this.state.further_details,
         user_id: this.state.user_id,
         User_username: this.state.User_username,
-        InterviewerName: this.state.InterviewerName
+      }
+
+      request.onload = () => {
+        this.props.history.push("/my_appointments");
       }
 
       request.send(JSON.stringify(body))
+
     }
 
     componentDidMount() {
@@ -73,28 +74,9 @@ class Appointment extends React.Component{
         }
      }
 
-     request.send(null) 
+     request.send(null)
     }
 
-
-    // userIdComponentDidMount() {
-    //    var url = 'http://localhost:1234/users/'
-    //    var request = new XMLHttpRequest()
-    //    request.open('GET', url)
-    //    request.setRequestHeader("Content-Type", "application/json");
-    //    request.withCredentials = true;
-
-    //  request.onload = () => {
-    //     if(request.status === 200) {
-    //       console.log(request.responseText);
-    //       const user = JSON.parse(request.responseText);
-
-    //       this.setState({user: data});
-    //     }
-    //  }
-
-    //  request.send(null) 
-    // }
 
 
 

@@ -4,7 +4,7 @@ before_action :authenticate_user!
 
 def index
   appointments = Appointment.all
-  render :json => appointments
+  render :json => appointments.as_json({include: [:interviewer, :user]})
 end
 
 def show
@@ -18,7 +18,6 @@ def create
     time: params[:time],
     user_id: current_user.id,
     User_username: current_user.username,
-    InterviewerName: params[:InterviewerName],
     interviewer_id: params[:interviewer_id],
     further_details: params[:further_details]   
     })
@@ -30,9 +29,9 @@ def destroy
   appointment = Appointment.find(params[:id])
 
   if(appointment.destroy!)
-    render :json => {status: :success}
+    render :json => {appointment: appointment}
   else
-    render :json => {status: :delete_failed}
+    render :json => {appointment: false}
   end
 end
 

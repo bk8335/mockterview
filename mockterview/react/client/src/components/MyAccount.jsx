@@ -32,21 +32,7 @@ class MyAccount extends React.Component {
   }
 
   render() {
-    // let userDetails = Object.keys(this.state.currentUser).map()
-
-   /* <h2>My Account details</h2>
-    <h4>Email: </h4>
-    <h4>Username: {user.username} </h4>
-    <h4>Experience level: </h4>
-    <h4>Job industry: </h4>
-    <h4>Target job: </h4>*/
-
-    // this.state.currentUser.forEach((key) => {
-    //   return
-    //     <li>
-   
-    //     </li>
-    // })
+    
     const user = this.state.currentUser;
 
     return(
