@@ -6,12 +6,11 @@ class Appointment extends React.Component{
   constructor(props) {
       super(props);
       this.state = {
-        time: "",
+        time: Date.now(),
         further_details: "",
         interviewers: [],
         user_id: -2,
         interviewer_id: -1,
-        User_username: ""
       };
 
       this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -47,7 +46,6 @@ class Appointment extends React.Component{
         time: this.state.time,
         further_details: this.state.further_details,
         user_id: this.state.user_id,
-        User_username: this.state.User_username,
       }
 
       request.onload = () => {
@@ -104,7 +102,7 @@ class Appointment extends React.Component{
           </label>
           <label>
             Interview time:
-            <input type="text" value={this.state.value} onChange={this.handleTimeChange} />
+            <input type="datetime-local" value={this.state.value} onChange={this.handleTimeChange} />
           </label>
           <br></br>
           <br></br>

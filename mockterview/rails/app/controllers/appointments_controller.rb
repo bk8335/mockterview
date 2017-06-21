@@ -17,7 +17,6 @@ def create
   new_appointment = Appointment.create!({
     time: params[:time],
     user_id: current_user.id,
-    User_username: current_user.username,
     interviewer_id: params[:interviewer_id],
     further_details: params[:further_details]   
     })

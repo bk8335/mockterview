@@ -57,6 +57,10 @@ class MyInterviews extends React.Component {
 
   }
 
+  countdownClock(time){
+    return "hello"
+  }
+
 
   render() {
     let appointmentDetails = []
@@ -67,7 +71,9 @@ class MyInterviews extends React.Component {
 
         <li key={appointment.id}>
           <h4>Interviewer: {appointment.interviewer.name}</h4>
-          <p>Time: {appointment.time}</p>
+          <p>Date: {appointment.time.slice(0,10) }</p>
+          <p>Time: {appointment.time.slice(12,16) }</p>
+          <p>Time until interview: {this.countdownClock(appointment.time)} </p>
           <p>Further details: {appointment.further_details}</p>
           <button onClick={this.deleteAppointment} value={appointment.id}>Cancel Appointment </button>
           <button>Write Review about {appointment.InterviewerName}</button>
