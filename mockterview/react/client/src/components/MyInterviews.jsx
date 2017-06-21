@@ -58,7 +58,25 @@ class MyInterviews extends React.Component {
   }
 
   countdownClock(time){
-    return "hello"
+
+    // var countdownTimer = setInterval(function(){
+
+      var distanceMs = Date.parse(time) - Date.now()
+
+      if (distanceMs < 0) {
+          // clearInterval(countdownTimer);
+          return "Interview finished"
+        }
+      else{
+        var days = Math.floor(distanceMs / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distanceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distanceMs % (1000 * 60 * 60)) / (1000 * 60));
+        return days + " days " + hours + " hours " + minutes + " minutes "
+      }
+
+      
+
+    // }, 1000)
   }
 
 
