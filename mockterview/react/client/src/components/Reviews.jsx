@@ -37,7 +37,7 @@ class Reviews extends React.Component{
     let reviewElements = []
     console.log(this.state)
     this.state.reviews.forEach((review) => {
-      reviewElements.push(
+      reviewElements.unshift(
         <li key={review.id}>
           <h3>Interviewer: {review.interviewer.name} </h3>
           <h3><strong>Rating: {review.rating}</strong></h3>

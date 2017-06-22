@@ -97,7 +97,7 @@ class NewReview extends React.Component {
           <br></br>
         </label>
         <label> Rating (out of 5)
-          <input type="number" value={this.state.value} onChange={this.handleRatingChange}/>
+          <input type="number" value={this.state.value} onChange={this.handleRatingChange} min="1" max="5"/>
           <br></br>
           <br></br>
         </label>
