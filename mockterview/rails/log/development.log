@@ -17736,3 +17736,41 @@ Processing by ReviewsController#index as */*
   [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 46]]
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1[0m  [["id", 34]]
 Completed 200 OK in 22ms (Views: 2.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/appointments" for ::1 at 2017-06-22 06:42:23 +0100
+Processing by AppointmentsController#index as */*
+  Parameters: {"appointment"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 46]]
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT "appointments".* FROM "appointments"[0m
+  [1m[35mInterviewer Load (0.1ms)[0m  SELECT  "interviewers".* FROM "interviewers" WHERE "interviewers"."id" = ? LIMIT 1  [["id", 33]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 46]]
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-22 06:42:27 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 46]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for ::1 at 2017-06-22 06:42:27 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 46]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users.json" for ::1 at 2017-06-22 06:56:14 +0100
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 46]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2017-06-22 06:56:15 +0100
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 46]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)

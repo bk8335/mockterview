@@ -11,7 +11,7 @@ class Pitch extends React.Component{
       <p>Want to know how you really did?</p>
       <img src="../../images/get_a_job.jpg" alt="Oh just get a job" height="200" width="320"/>
       <p>Schedule a mock interview with a real HR professional.</p>
-      <p>Get real feedback. Get better. Get a job.</p>
+      <p>Get feedback. Get better. Get a job.</p>
       
       </div>
     )
