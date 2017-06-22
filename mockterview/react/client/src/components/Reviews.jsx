@@ -31,16 +31,16 @@ class Reviews extends React.Component{
     request.send(null)
   }
 
-  
-
   render() {
     let reviewElements = []
     console.log(this.state)
     this.state.reviews.forEach((review) => {
       reviewElements.unshift(
+        
+
         <li key={review.id}>
           <h3>Interviewer: {review.interviewer.name} </h3>
-          <h3><strong>Rating: {review.rating}</strong></h3>
+          <h3><strong>Rating:</strong> {review.rating}</h3>
           <p><strong>Review:</strong> {review.personal_review}</p>
           <p><strong>Date:</strong> {review.updated_at.slice(0,10)} </p>
           <p><strong>Submitted by:</strong> {review.user.username} </p>
